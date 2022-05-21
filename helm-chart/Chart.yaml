@@ -1,0 +1,16 @@
+﻿apiVersion: v2
+name: hw2service
+description: Home work num.2 Otus
+
+type: application
+
+version: 0.1.0
+appVersion: v9
+
+dependencies:
+  - name: postgresql
+    version: 8.x.x
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+    tags:
+      - myapp-database
