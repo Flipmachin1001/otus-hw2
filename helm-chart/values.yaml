@@ -1,0 +1,32 @@
+replicaCount: 2
+
+image:
+  repository: flipmachin1001/k8shm2openapi
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8000
+
+postgresql:
+  enabled: true
+  postgresqlUsername: myuser
+  postgresqlPassword: passwd
+  postgresqlDatabase: myapp
+  service:
+    port: "5432"
+  
+ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: "/"
+    hosts:
+      - host: arch.homework
+        paths: 
+        - "/"
+
+serviceAccount:
+    create: false
+
+autoscaling:
+    enabled: false
